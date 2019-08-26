@@ -1,6 +1,9 @@
 var path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 const ROOT_PATH = path.resolve(__dirname, '../');
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
@@ -28,7 +31,11 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name]/index.[chunkhash].css',
+      chunkFilename: '[name]/index.bundle.[chunkhash].css',
+    }),
   ],
   module: {
     rules: [
@@ -64,7 +71,30 @@ module.exports = {
             ]
           }
         }
-      }
+      },
+      {
+        test: /\.(sa|sc)ss$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                autoprefixer(),
+                cssnano({
+                  preset: 'default',
+                  autoprefixer: false,
+                  'postcss-zindex': false,
+                  'postcss-reduce-idents': false,
+                }),
+              ],
+            },
+          },
+          'sass-loader',
+        ],
+      },
     ]
   }
 };

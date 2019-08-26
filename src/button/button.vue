@@ -1,5 +1,5 @@
 <template>
-  <div @click="onClick">
+  <div class="button" @click="onClick">
   按钮啊啊啊啊
   </div>
 </template>
@@ -13,3 +13,9 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.button {
+  color: lightblue;
+}
+
+</style>
