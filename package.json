@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config build/webpack.config.js"
+    "build": "npm run build:lib && npm run build:pkg",
+    "build:lib": "webpack --config build/webpack.lib.js",
+    "build:pkg": "webpack --config build/webpack.pkg.js"
   },
   "repository": {
     "type": "git",

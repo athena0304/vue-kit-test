@@ -7,34 +7,30 @@ const cssnano = require('cssnano');
 
 const ROOT_PATH = path.resolve(__dirname, '../');
 const SRC_PATH = path.resolve(ROOT_PATH, 'src');
-const BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
+const BUILD_PATH = path.resolve(ROOT_PATH, 'lib');
 
 module.exports = {
   mode: 'production',
   entry: {
-    button: path.resolve(SRC_PATH, 'button/index.js'),
-    card: path.resolve(SRC_PATH, 'card/index.js'),
-    // index: path.resolve(SRC_PATH, 'index.js'),
+    index: path.resolve(SRC_PATH, 'index.js'),
   },
   resolve:{
     extensions: ['.js', '.json', '.vue'],
   },
   output: {
     path: BUILD_PATH,
-    filename: '[name]/index.js',
-    // filename: 'vue-kit-test.js',
+    filename: 'vue-kit-test.min.js',
     library: 'vueKitTest',
     libraryTarget: 'umd'
   },
   optimization: {
-    minimize: false,
+    minimize: true,
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name]/index.[chunkhash].css',
-      chunkFilename: '[name]/index.bundle.[chunkhash].css',
+      filename: 'index.css',
     }),
   ],
   module: {
@@ -53,7 +49,6 @@ module.exports = {
             presets: [
               '@babel/preset-env',
               {
-                // loose: true,
                 // modules:false
               }
             ],
@@ -67,7 +62,6 @@ module.exports = {
                   useESModules: false
                 }
               ],
-              // '@babel/plugin-transform-object-assign'
             ]
           }
         }
