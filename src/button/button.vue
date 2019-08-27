@@ -8,7 +8,7 @@ export default {
   name: 'Button',
   methods: {
     onClick() {
-      console.log('button click')
+      console.log('button click1')
     }
   }
 }
@@ -16,6 +16,7 @@ export default {
 <style lang="scss">
 .button {
   color: lightblue;
+  font-size: 14px;
 }
 
 </style>

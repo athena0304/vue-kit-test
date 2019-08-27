@@ -1,23 +1,11 @@
-// const add = function(aaa, bbb) {
-//   console.log('add-src')
-//   return aaa + bbb
-// }
-// const minus = function(aaa, bbb) {
-//   return aaa - bbb
-// }
-
-// export {
-//   add,
-//   minus
-// }
-
-import Button from './button'
-import Card from './card'
+// This file is auto gererated by build/build-entry.js
+import Button from './button';
+import Card from './card';
 
 const components = [
   Button,
   Card
-]
+];
 
 const install = (Vue) => {
   components.forEach(Component => {
@@ -26,10 +14,10 @@ const install = (Vue) => {
 };
 
 export {
-  install, 
+  install,
   Button,
   Card
-}
+};
 
 export default {
   install
