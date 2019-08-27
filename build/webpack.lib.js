@@ -29,10 +29,7 @@ module.exports = merge(common, {
   },
   plugins: [
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [
-        '[name]/*.js',
-        '[name]/*.css',
-      ],
+      cleanOnceBeforeBuildPatterns: entries,
     }),
     new MiniCssExtractPlugin({
       filename: '[name]/index.css',

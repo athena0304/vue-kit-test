@@ -21,7 +21,7 @@ module.exports = merge(common, {
   plugins: [
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: [
-        '*.mini.js',
+        '*.min.js',
         '*.css',
       ],
     }),
